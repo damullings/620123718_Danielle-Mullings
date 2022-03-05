@@ -35,6 +35,17 @@
           '<button id="equal" value="=" class="operator">=</button>'+
         '</div>'+
       '</div>'+
+      '<div class="row">'+
+      '<button id="sign" value="+/-" class="operator">+/-</button>'+
+      '<button id="sqrt" value="sqrt" class="operator">√</button>'+
+      '<button id="percent" value="%" class="operator">%</button>'+
+    '</div>'+
+    '<div class="row">'+
+      '<button id="mrecall" value="MRC" class="operator">MRC</button>'+
+      '<button id="mminus" value="M-" class="operator">M-</button>'+
+      '<button id="mplus" value="M+" class="operator">M+</button>'+
+    '</div>'+
+
     '</div>'
     //'<script type="text/javascript" src="lib/calculator.js"></script>' //enabling this removes clickability for some reason
 

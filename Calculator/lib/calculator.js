@@ -14,26 +14,44 @@ const main = () =>
     });
   }
 
+// calculate function
+function calculate(event) {
+  // current clicked buttons value
+  const clickedButtonValue = event.target.value;
+
+  if (clickedButtonValue === '=') {
+    // check if the display is not empty then only do the calculation
+    if (display.value !== '') {
+      // calculate and show the answer to display
+      display.value = eval(display.value);
+    }
+  } else if (clickedButtonValue === 'C') {
+    // clear everything on display
+    display.value = '';
+  
+  }else if (clickedButtonValue === "+/-"){
+      display.value = (display.value)*-1;
 
 
-  // calculate function
-  function calculate(event) {
-    // current clicked buttons value
-    const clickedButtonValue = event.target.value;
-
-    if (clickedButtonValue === '=') {
-      // check if the display is not empty then only do the calculation
-      if (display.value !== '') {
-        // calculate and show the answer to display
-        display.value = eval(display.value);
-        screen = display.value;
-      }
-    } else if (clickedButtonValue === 'C') {
-      // clear everything on display
-      display.value = '';
-    } else if (clickedButtonValue === 'sqrt'){
+  }else if (clickedButtonValue === "sqrt")
+  
+  {
       display.value = Math.sqrt(display.value);
-    
+  } 
+  
+  else if (clickedButtonValue === "%")
+  {
+      display.value = (display.value/100)
+  }
+
+  else {
+    // otherwise concatenate it to the display
+    display.value += clickedButtonValue;
+  }
+}
+
+/** 
+
     } else if (clickedButtonValue === '%') {
       display.value = display.value/100;
   
@@ -58,17 +76,8 @@ const main = () =>
       screen = eval(screen + "-" + display.value);
       display.value = screen;
   
-    } else if (clickedButtonValue === '+/-') {
-      if(display.value<0){
-        display.value = Math.abs(display.value);
-      }else{
-        display.value = -Math.abs(display.value);
-      }
-    } else {
-      // otherwise concatenate it to the display
-      display.value += clickedButtonValue;
-    }
-  }
+    
+  }*/
 
   startUpCalculator();
 
