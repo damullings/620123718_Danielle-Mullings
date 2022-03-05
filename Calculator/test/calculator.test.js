@@ -159,7 +159,7 @@
         document.querySelectorAll("button")[5].click(); //This is the button with value 5
         document.getElementById('div').click(); //This is the division button
         document.querySelectorAll("button")[10].click(); // This is the button with value 3
-        document.getElementById('equal').click(); //This is the multiplication button
+        document.getElementById('equal').click(); //This is the equal button
         expect(document.getElementsByClassName('display')[0].value).toBe('-146');
     });
 
@@ -169,7 +169,7 @@
         document.querySelectorAll("button")[5].click(); //This is the button with value 5
         document.getElementById('div').click(); //This is the division button
         document.getElementById('zero').click(); //This is the division button
-        document.getElementById('equal').click(); //This is the multiplication button
+        document.getElementById('equal').click(); //This is the equal button
         expect(document.getElementsByClassName('display')[0].value).toBe('Infinity');
     });
 
@@ -178,7 +178,7 @@
         document.querySelectorAll("button")[1].click(); // This is the button with value 8
         document.getElementById('add').click(); //This is the addition button
         document.getElementById('zero').click(); //This is the addition button
-        document.getElementById('equal').click(); //This is the multiplication button
+        document.getElementById('equal').click(); //This is the equal button
         expect(document.getElementsByClassName('display')[0].value).toBe('8');
     });
 
@@ -187,7 +187,7 @@
         document.querySelectorAll("button")[1].click(); // This is the button with value 8
         document.getElementById('sub').click(); //This is the subtraction button
         document.getElementById('zero').click(); //This is the addition button
-        document.getElementById('equal').click(); //This is the multiplication button
+        document.getElementById('equal').click(); //This is the equal button
         expect(document.getElementsByClassName('display')[0].value).toBe('8');
     });
 
@@ -196,7 +196,7 @@
         document.querySelectorAll("button")[8].click(); // This is the button with value 1
         document.getElementById('mul').click(); //This is the division button
         document.getElementById('zero').click(); //This is the division button
-        document.getElementById('equal').click(); //This is the multiplication button
+        document.getElementById('equal').click(); //This is the equal button
         expect(document.getElementsByClassName('display')[0].value).toBe('0');
     });
 
@@ -206,8 +206,83 @@
         document.querySelectorAll("button")[8].click(); // This is the button with value 1
         document.getElementById('add').click(); //This is the addition button
         document.querySelectorAll("button")[10].click(); // This is the button with value 3
-        document.getElementById('cancel').click(); //This is the multiplication button
+        document.getElementById('cancel').click(); //This is the cancel button
         expect(document.getElementsByClassName('display')[0].value).toBe('');
     });
+
+    //TESTS FOR NEW FUCNTIONALITY
+
+    //Test for MRC double click
+    it('return blank for 71 MRC', function () {
+      document.querySelectorAll("button")[0].click(); // This is the button with value 7
+      document.querySelectorAll("button")[8].click(); // This is the button with value 1
+      document.getElementById('mrecall').click(); //This is the addition button
+      document.getElementById('mrecall').click(); //This is the addition button
+      expect(document.getElementsByClassName('display')[0].value).toBe('');
+  });
+
+ //Test for MRC single click
+  it('return for 78 + 2 = then 3+4 = then MRC', function () {
+    document.querySelectorAll("button")[0].click(); // This is the button with value 7
+    document.querySelectorAll("button")[1].click(); // This is the button with value 8
+    document.getElementById('add').click(); //This is the addition button
+    document.querySelectorAll("button")[9].click(); // This is the button with value 2
+    document.getElementById('equal').click(); //This is the equsl button
+    document.getElementById('cancel').click(); //This is the cancel button
+    document.querySelectorAll("button")[10].click(); // This is the button with value 3
+    document.getElementById('add').click(); //This is the addition button
+    document.querySelectorAll("button")[4].click(); // This is the button with value 4
+    document.getElementById('equal').click(); //This is the equsl button
+    document.getElementById('mrecall').click(); //This is the addition button
+    expect(document.getElementsByClassName('display')[0].value).toBe('80');
+}); 
+
+ //Test for +/- single click
+ it('return -8 for 8 then +/-', function () {
+  document.querySelectorAll("button")[1].click(); // This is the button with value 8
+  document.getElementById('sign').click(); //This is the sign button
+  expect(document.getElementsByClassName('display')[0].value).toBe('-8');
+});
+
+//Test for +/- single click
+it('return 8 for -8 then +/-', function () {
+  document.getElementById('sub').click(); //This is the negative button
+  document.querySelectorAll("button")[1].click(); // This is the button with value 8
+  document.getElementById('sign').click(); //This is the sign button
+  expect(document.getElementsByClassName('display')[0].value).toBe('8');
+});
+
+//Test for sqrt
+it('return 2 for sqrt 4 ', function () {
+  document.querySelectorAll("button")[4].click(); // This is the button with value 4
+  document.getElementById('sqrt').click(); //This is the equsl button
+  expect(document.getElementsByClassName('display')[0].value).toBe('2');
+});
+
+//Test for sqrt 2
+it('return 2 for sqrt -4 ', function () {
+  document.getElementById('sub').click(); //This is the negative button
+  document.querySelectorAll("button")[4].click(); // This is the button with value 4
+  document.getElementById('sqrt').click(); //This is the equsl button
+  expect(document.getElementsByClassName('display')[0].value).toBe('NaN');
+});
+
+//Test for percentage
+it('return 0.07 for 7 then %', function () {
+  document.querySelectorAll("button")[0].click(); // This is the button with value 7
+  document.getElementById('percent').click(); //This is the sqrt button
+  expect(document.getElementsByClassName('display')[0].value).toBe('0.07');
+});
+
+//Test for percentage
+it('return 80 for 8000 then %', function () {  
+  document.getElementById('sub').click(); //This is the negative button
+  document.querySelectorAll("button")[1].click(); // This is the button with value 8
+  document.getElementById('zero').click(); //This is the zero button
+  document.getElementById('zero').click(); //This is the zero button
+  document.getElementById('zero').click(); //This is the zero button
+  document.getElementById('percent').click(); //This is the sqrt button
+  expect(document.getElementsByClassName('display')[0].value).toBe('-80');
+});
 
 });
