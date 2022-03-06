@@ -216,8 +216,9 @@
     it('return blank for 71 MRC', function () {
       document.querySelectorAll("button")[0].click(); // This is the button with value 7
       document.querySelectorAll("button")[8].click(); // This is the button with value 1
-      document.getElementById('mrecall').click(); //This is the addition button
-      document.getElementById('mrecall').click(); //This is the addition button
+      document.getElementById('mrecall').click(); //This is the recall button
+      document.getElementById('mrecall').click(); //This is the recall button
+      setTimeout(function(){},600);
       expect(document.getElementsByClassName('display')[0].value).toBe('');
   });
 

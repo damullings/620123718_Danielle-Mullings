@@ -21,8 +21,6 @@ const main = () =>
       }
       );
 
-      
-
   }
 
   function updateClick(e)
@@ -35,7 +33,9 @@ function calculate(event) {
   // current clicked buttons value
   const clickedButtonValue = event.target.value;
 
+  
 
+  numClicks=event.detail
   if (clickedButtonValue === '=') {
     // check if the display is not empty then only do the calculation
     if (display.value !== '') {
@@ -68,22 +68,32 @@ function calculate(event) {
 
   else if (clickedButtonValue === "MRC")
   {
-    if (numClicks == 0)
+
+    numClicks++;
+    var timer = setTimeout((
+        function()
+        {
+          numClicks = numClicks;
+        }),500);
+        
+    
+        if(numClicks === 1)
     {
-        display.value = memoryStack.pop();
+        memoryStack.pop();
         display.value = memoryStack.pop();
         if (display.value==="undefined")
         {
             display.value="No items in memory";
         }
     }
-    else if(numClicks == 2)
+    else if (numClicks === 2)
     {
-      display.value = '';
-      console.log("dbl");
-      numClicks = 0;
-    }    
-      
+        clearTimeout(timer);
+        display.value = '';
+        console.log("dbl");
+        numClicks = 0;
+    }
+
   }
   else if (clickedButtonValue === "M-")
   {
